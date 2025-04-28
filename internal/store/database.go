@@ -21,17 +21,16 @@ return db, nil
 
 }
 
-func MigrateFS(db *sql.DB, migrationsFS fs.FS, dir string)error{
-
-goose.SetBaseFS(migrationsFS)
-defer func(){
+func MigrateFS(db *sql.DB, migrationsFS fs.FS, dir string) error {
+ goose.SetBaseFS(migrationsFS)
+ defer func(){
 	goose.SetBaseFS(nil)
-}()
-return Migrate(db,dir)
+  }()
+ return Migrate(db,dir)
 }
 
 
-func Migrate(db *sql.DB, dir string)error{
+func Migrate(db *sql.DB, dir string) error {
 
 err:= goose.SetDialect("postgres")
 if err != nil {

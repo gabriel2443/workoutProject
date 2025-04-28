@@ -53,6 +53,6 @@ return app, nil
 
 func (a *Application)HealthCheck(w http.ResponseWriter, r *http.Request){
 
-	fmt.Fprint(w, "Status i available\n")
+	fmt.Fprint(w, "Status is available\n")
 }
 

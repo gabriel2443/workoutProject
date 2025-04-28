@@ -1,9 +1,8 @@
 -- +goose Up
 -- +goose StatementBegin
-
 CREATE TABLE IF NOT EXISTS workouts(
  id BIGSERIAL PRIMARY KEY,
- --user_id
+ -- user_id
  title VARCHAR(255) NOT NULL,
  description TEXT,
  duration_minutes INTEGER NOT NULL,
@@ -13,9 +12,10 @@ CREATE TABLE IF NOT EXISTS workouts(
 
 
 )
-
 -- +goose StatementEnd
+
+
 -- +goose Down
--- +Goose StatementBegin
+-- +goose StatementBegin
 DROP TABLE workouts;
--- +goose statementEnd
+-- +goose StatementEnd

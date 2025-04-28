@@ -1,6 +1,5 @@
 -- +goose Up
 -- +goose StatementBegin
-
 CREATE TABLE IF NOT EXISTS workout_entries(
 id BIGSERIAL PRIMARY KEY,
 workout_it BIGINT NOT NULL REFERENCES workouts(id) ON DELETE CASCADE,
@@ -18,9 +17,9 @@ CONSTRAINT valid_workout_entry CHECK(
 )
 
 )
-
 -- +goose StatementEnd
+
 -- +goose Down
--- +Goose StatementBegin
-DROP TABLE workout_entriess;
--- +goose statementEnd
+-- +goose StatementBegin
+DROP TABLE workout_entries;
+-- +goose StatementEnd
