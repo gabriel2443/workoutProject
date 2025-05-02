@@ -138,16 +138,6 @@ if err!= nil{
 	utils.WriteJSON(w, http.StatusBadRequest, utils.Envelope{"error": "invalid workout id"})
 }
 
-// workout, err := wh.workoutStore.GetWorkoutByID(workoutID)
-// existingWorkout, err := wh.workoutStore.GetWorkoutByID(workoutID)
-// if err != nil{
-// 	http.Error(w, "failed tot fetch workout", http.StatusInternalServerError)
-// 	return
-// }
-// if existingWorkout == nil {
-// 	http.NotFound(w,r)
-// 	return
-// }
 err = wh.workoutStore.DeleteWorkout(workoutID)
 if err == sql.ErrNoRows{
 	wh.logger.Printf("ERROR: readIDParam: %v", err)
