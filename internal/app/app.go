@@ -38,7 +38,7 @@ logger := log.New(os.Stdout, "", log.Ldate | log.Ltime)
 workoutStore := store.NewPostgresWorkoutStore(pgDB)
 
 // our handlers will go here
-workoutHandler := api.NewWorkoutHandler(workoutStore)
+workoutHandler := api.NewWorkoutHandler(workoutStore, logger)
 
 app := &Application{
 	Logger : logger,
