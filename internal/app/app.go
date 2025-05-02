@@ -17,7 +17,7 @@ type Application struct{
 Logger  *log.Logger
 WorkoutHandler *api.WorkoutHandler
 DB *sql.DB
-
+UserHandler *api.UserHandler
 
 }
 
@@ -36,13 +36,16 @@ if err != nil {
 logger := log.New(os.Stdout, "", log.Ldate | log.Ltime)
 //stores will go here
 workoutStore := store.NewPostgresWorkoutStore(pgDB)
+userStore := store.NewPostgresUserStore(pgDB)
 
 // our handlers will go here
 workoutHandler := api.NewWorkoutHandler(workoutStore, logger)
+userHandler := api.NewUserHandler(userStore, logger)
 
 app := &Application{
 	Logger : logger,
 	WorkoutHandler: workoutHandler,
+	UserHandler: userHandler,
 	DB:      pgDB,
 }
 
