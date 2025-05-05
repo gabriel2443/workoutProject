@@ -95,6 +95,7 @@ user := &User{
 
 query := `
 SELECT id, username, email, password_hash, bio, created_at, updated_at
+FROM users
 WHERE username = $1
 `
 err:= s.db.QueryRow(query, username).Scan(

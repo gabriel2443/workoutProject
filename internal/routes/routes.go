@@ -16,6 +16,7 @@ r.Put("/workouts/{id}", app.WorkoutHandler.HandleUpdateWorkoutByID)
 r.Delete ("/workouts/{id}", app.WorkoutHandler.HandleDeleteByID)
 
 r.Post("/users", app.UserHandler.HandlerRegisterUser)
+r.Post("/tokens/authentication", app.TokenHandler.HandleCreateToken)
 
 return r
 
