@@ -8,6 +8,7 @@ import (
 	"os"
 
 	"github.com/gabriel2443/workOutProject/internal/api"
+	"github.com/gabriel2443/workOutProject/internal/middleware"
 	"github.com/gabriel2443/workOutProject/internal/store"
 	"github.com/gabriel2443/workOutProject/migrations"
 )
@@ -18,6 +19,7 @@ Logger  *log.Logger
 WorkoutHandler *api.WorkoutHandler
 UserHandler *api.UserHandler
 TokenHandler *api.TokenHandler
+Middleware middleware.UserMiddleware
 DB *sql.DB
 
 
@@ -45,13 +47,14 @@ tokenStore :=store.NewPostgresTokenStore(pgDB)
 workoutHandler := api.NewWorkoutHandler(workoutStore, logger)
 userHandler := api.NewUserHandler(userStore, logger)
 tokenHandler := api.NewTokenHandler(tokenStore, userStore, logger)
-
+middlewareHandler := middleware.UserMiddleware{UserStore: userStore}
 
 app := &Application{
 	Logger : logger,
 	WorkoutHandler: workoutHandler,
 	UserHandler: userHandler,
 	TokenHandler: tokenHandler,
+	Middleware: middlewareHandler,
 	DB:      pgDB,
 }
 
