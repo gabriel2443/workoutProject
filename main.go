@@ -31,7 +31,7 @@ server := &http.Server{
 	ReadTimeout : 10* time.Second,
 	WriteTimeout : 30* time.Second,
 }
-app.Logger.Printf("We are runnin on port %d", port)
+app.Logger.Printf("We are running on port %d", port)
 
 err = server.ListenAndServe()
 if err != nil{
